@@ -45,3 +45,54 @@ TimeDistributed(MaxPooling2D())
 LSTM(32)
 Dense(32, activation='relu')
 Dense(1, activation='sigmoid')
+
+
+## 📊 Results
+
+| Metric             | Value              |
+|--------------------|--------------------|
+| Test Accuracy      | ~79.10%            |
+| Input Shape        | 10 × 64 × 64 frames|
+| Model Size         | ~1.2MB             |
+| Prediction Speed   | ~1.5s per clip     |
+
+
+## 🧪 Demo: Predicting on New Videos
+
+You can test the model on any `.mp4` clip like this:
+
+```python
+from tensorflow.keras.models import load_model
+model = load_model("drift_rear_model.h5")
+
+# Prepare 10-frame video clip → preprocess → predict
+
+
+🔴 Predicted: DRIFTING/SKIDDING (Confidence: 0.93)
+🟢 Predicted: REAR/NORMAL (Confidence: 0.87)
+
+
+## 🛠️ Setup Instructions
+
+1. **Clone the repo**:
+
+```bash
+git clone https://github.com/your-username/CrashSense.git
+cd CrashSense
+
+
+pip install tensorflow opencv-python matplotlib
+
+
+## 📌 Future Improvements
+
+- Add more accident classes like:
+  - Head-On Collision
+  - Lane Change
+- Use advanced architectures like:
+  - ConvLSTM2D
+  - 3D CNN
+- Integrate with real-time webcam feed for live detection
+- Deploy the model as a web app using:
+  - Streamlit
+  - Gradio
